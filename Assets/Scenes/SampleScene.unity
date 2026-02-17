@@ -1144,6 +1144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5aa454a4f66e0428047bfd5cbfe528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectDetectedLogic
+  outlineMaterial: {fileID: 2100000, guid: ca368c1ba6cfd0b478fc91cef78f663b, type: 2}
+  originalMaterial: {fileID: 3016479151454471876, guid: b31b8fd91d3ca904d80f15a3c003be24, type: 3}
 --- !u!64 &1793653821
 MeshCollider:
   m_ObjectHideFlags: 0
