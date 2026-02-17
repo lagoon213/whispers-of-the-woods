@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class InventoryShowItems : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class InventoryShowItems : MonoBehaviour
     
     void OnItemAdded(string itemName, int quantity)
     {
-        inventoryText.text = $"Inventory: {itemName} x{quantity}";
+         inventoryText.text = "Inventory:\n";
+        foreach (var item in inventory.Items)
+        {
+            inventoryText.text += $"{item.Key}: {item.Value}\n";
+        }
+
     }
 }

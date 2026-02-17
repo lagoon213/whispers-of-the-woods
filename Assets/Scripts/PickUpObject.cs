@@ -9,49 +9,27 @@ public class PickUpObject : MonoBehaviour
 
     void OnEnable()
     {
-        ObjectDetectedLogic.OnObjectDetected += OnDetected;
-        ObjectDetectedLogic.OnObjectDetectionStopped += OnDetectionStopped;
         PlayerInteractor.PickupTriggered += PickupTriggered;
         PlayerInteractor.PickupStopped += PickupStopped;
     }
 
     void OnDisable()
     {
-        ObjectDetectedLogic.OnObjectDetected -= OnDetected;
-        ObjectDetectedLogic.OnObjectDetectionStopped -= OnDetectionStopped;
         PlayerInteractor.PickupStopped -= PickupStopped;
         PlayerInteractor.PickupTriggered -= PickupTriggered;
     }
 
-    private bool isObjectDetected;
     private bool IsPickupTriggered;
 
-    private GameObject objectDetected;
-
-    void OnDetected(ObjectDetectedLogic detectedObject)
-    {
-        isObjectDetected = true;
-        objectDetected = detectedObject.gameObject;
-        Debug.Log("Object has been detected");
-    }
-
-    void OnDetectionStopped()
-    {
-        isObjectDetected = false;
-        objectDetected = null;
-        Debug.Log("Stopped detecting object");
-    }
 
     void PickupStopped()
     {
         IsPickupTriggered = false;
-        Debug.Log("Pickup trigger stopped");
     }
 
     void PickupTriggered()
     {
         IsPickupTriggered = true;
-        Debug.Log("Pickup triggered");
     }
 
     void Start()
@@ -59,12 +37,11 @@ public class PickUpObject : MonoBehaviour
         inventory = FindAnyObjectByType<Inventory>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TriggerPickUpObject()
     {
-        if (isObjectDetected && IsPickupTriggered)
+        if (IsPickupTriggered)
         {
-            Destroy(objectDetected);
+            Destroy(gameObject);
             IsPickupTriggered = false;
             inventory.AddItems(itemName, quantity);
         }

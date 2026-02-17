@@ -5,7 +5,9 @@ using UnityEngine.Rendering;
 
 public class Inventory : MonoBehaviour
 {
-    private Dictionary<string, int> items = new();
+    private Dictionary<string, int> items = new(); 
+
+    public IReadOnlyDictionary<string, int> Items => items;
 
     [SerializeField] private GameObject NewMushroomCanvas;
 
