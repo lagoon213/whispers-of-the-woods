@@ -1,7 +1,12 @@
 using UnityEngine;
 
-public class PickUpMushroom : MonoBehaviour
+
+public class PickUpObject : MonoBehaviour
 {
+    [SerializeField] private string itemName;
+    [SerializeField] private int quantity;
+    private Inventory inventory;
+
     void OnEnable()
     {
         ObjectDetectedLogic.OnObjectDetected += OnDetected;
@@ -18,29 +23,29 @@ public class PickUpMushroom : MonoBehaviour
         PlayerInteractor.PickupTriggered -= PickupTriggered;
     }
 
-    private bool isMushroomDetected;
+    private bool isObjectDetected;
     private bool IsPickupTriggered;
 
-    private GameObject detectedMushroom;
+    private GameObject objectDetected;
 
     void OnDetected(ObjectDetectedLogic detectedObject)
     {
-        isMushroomDetected = true;
-        detectedMushroom = detectedObject.gameObject;
-        Debug.Log("Picked up mushroom");
+        isObjectDetected = true;
+        objectDetected = detectedObject.gameObject;
+        Debug.Log("Object has been detected");
     }
 
     void OnDetectionStopped()
     {
-        isMushroomDetected = false;
-        detectedMushroom = null;
-        Debug.Log("Stopped picking up mushroom");
+        isObjectDetected = false;
+        objectDetected = null;
+        Debug.Log("Stopped detecting object");
     }
 
     void PickupStopped()
     {
         IsPickupTriggered = false;
-        Debug.Log("Pickup stopped");
+        Debug.Log("Pickup trigger stopped");
     }
 
     void PickupTriggered()
@@ -51,16 +56,17 @@ public class PickUpMushroom : MonoBehaviour
 
     void Start()
     {
-        
+        inventory = FindAnyObjectByType<Inventory>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isMushroomDetected && IsPickupTriggered)
+        if (isObjectDetected && IsPickupTriggered)
         {
-            Destroy(detectedMushroom);
+            Destroy(objectDetected);
             IsPickupTriggered = false;
+            inventory.AddItems(itemName, quantity);
         }
     }
 }

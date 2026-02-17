@@ -13,13 +13,13 @@ public class PlayerInteractor : MonoBehaviour
         
     }
 
-    private void OnPickup(InputValue value)
+    public void OnPickup(InputAction.CallbackContext value)
     {
-        if (value.Get<float>() > 0)
+        if (value.started)
         {
             PickupTriggered?.Invoke();
         }
-        else
+        else if (value.canceled)
         {
             PickupStopped?.Invoke();
         }

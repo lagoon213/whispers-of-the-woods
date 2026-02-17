@@ -19,6 +19,16 @@ public class LookDirection : MonoBehaviour
 
     void Update()
     {
+        
+    }
+
+    public void OnLook(InputAction.CallbackContext value)
+    {
+        lookInput = value.ReadValue<Vector2>();
+    }
+
+    void FixedUpdate()
+    {
         float yaw = lookInput.x * sensitivity;
         float pitch = lookInput.y * sensitivity;
         transform.Rotate(0f, yaw, 0f);
@@ -26,9 +36,5 @@ public class LookDirection : MonoBehaviour
         currentPitch += pitch;
         currentPitch = Mathf.Clamp(currentPitch, -maxPitch, maxPitch);
         cameraPivot.transform.localRotation = Quaternion.Euler(-currentPitch, 0f, 0f);
-    }
-
-    private void OnLook(InputValue value){
-        lookInput = value.Get<Vector2>();
     }
 }

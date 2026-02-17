@@ -8,8 +8,6 @@ public class Movement : MonoBehaviour
     private Rigidbody rb;
 
     private Vector2 moveInput;
-    private float jumpInput;
-
     private bool jumpTriggered;
 
 
@@ -24,16 +22,14 @@ public class Movement : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext value)
     {
-        moveInput = value.Get<Vector2>();
+        moveInput = value.ReadValue<Vector2>();
     }
 
-    private void OnJump(InputValue value)
+    public void OnJump(InputAction.CallbackContext value)
     {
-        jumpInput = value.Get<float>();
-
-        if (jumpInput > 0)
+        if (value.started)
         {
             jumpTriggered = true;
         }
