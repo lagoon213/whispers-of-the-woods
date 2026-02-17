@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
 {
     private Dictionary<string, int> items = new();
 
+    [SerializeField] private GameObject NewMushroomCanvas;
 
     public event Action<string, int> OnItemAdded;
     public event Action<string, int> OnItemRemoved;
@@ -17,6 +18,7 @@ public class Inventory : MonoBehaviour
         if (!items.ContainsKey(itemName))
         {
             items[itemName] = 0;
+            NewMushroomTimer();
         }
         items[itemName] += quantity;
         Debug.Log($"Added {quantity} {itemName}(s) to inventory. Total: {items[itemName]}");
@@ -51,7 +53,18 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        
+        HideNewMushroomCanvas();
+    }
+
+    private void NewMushroomTimer()
+    {
+        NewMushroomCanvas.SetActive(true);
+        Invoke("HideNewMushroomCanvas", 3f);
+    }
+
+    private void HideNewMushroomCanvas()
+    {
+        NewMushroomCanvas.SetActive(false);
     }
 
     // Update is called once per frame
