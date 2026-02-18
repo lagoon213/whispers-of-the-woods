@@ -9,28 +9,17 @@ public class PickUpObject : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerInteractor.PickupTriggered += PickupTriggered;
-        PlayerInteractor.PickupStopped += PickupStopped;
+        PlayerInteractor.PickupTriggered += () => IsPickupTriggered = true;
+        PlayerInteractor.PickupStopped += () => IsPickupTriggered = false;
     }
 
     void OnDisable()
     {
-        PlayerInteractor.PickupStopped -= PickupStopped;
-        PlayerInteractor.PickupTriggered -= PickupTriggered;
+        PlayerInteractor.PickupStopped -= () => IsPickupTriggered = false;
+        PlayerInteractor.PickupTriggered -= () => IsPickupTriggered = true;
     }
 
     private bool IsPickupTriggered;
-
-
-    void PickupStopped()
-    {
-        IsPickupTriggered = false;
-    }
-
-    void PickupTriggered()
-    {
-        IsPickupTriggered = true;
-    }
 
     void Start()
     {

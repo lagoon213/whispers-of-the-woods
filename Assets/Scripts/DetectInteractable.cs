@@ -6,6 +6,7 @@ public class DetectInteractable : MonoBehaviour
 {
     [SerializeField] private float interactRange = 3f;
     [SerializeField] private LayerMask interactableLayer;
+    [SerializeField] private LayerMask treeInteractableLayer;
 
     private ObjectDetectedLogic objectDetectedLogic;
 
@@ -34,6 +35,15 @@ public class DetectInteractable : MonoBehaviour
             {
                 objectDetectedLogic.RemoveOutline();
                 objectDetectedLogic = null;
+            }
+        }
+
+        if (Physics.Raycast(ray, out RaycastHit pickupHit, interactRange, treeInteractableLayer))
+        {
+            ChopTree chopTree = pickupHit.collider.GetComponentInParent<ChopTree>();
+            if (chopTree != null)
+            {
+                chopTree.Chop();
             }
         }
     }
