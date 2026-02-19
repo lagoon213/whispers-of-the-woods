@@ -10,9 +10,6 @@ public class TreeHealth : MonoBehaviour
     [SerializeField] private GameObject healthBarObject;
     [SerializeField] private GameObject woodLog;
     [SerializeField] private GameObject player;
-   // [SerializeField] private float sideOffset = 1f;
-//[SerializeField] private float heightOffset = 1.5f;
-
     [SerializeField] private float height = 1f;
     [SerializeField] private float radius = 3f;
     
@@ -48,12 +45,9 @@ public class TreeHealth : MonoBehaviour
         DirectionToPlayer.y = 0; 
         Vector3 dir = DirectionToPlayer.normalized;
         Vector3 offset = dir * radius + Vector3.up * height;
-        //Vector3 directionToPlayer = (player.transform.position - position).normalized;
-        //Vector3 offset = directionToPlayer * sideOffset + Vector3.up * heightOffset;
-        //healthBarFill.transform.position = position + offset;
-
         healthBarObject.transform.position = position + offset;
-        healthBarObject.transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
+        Transform cam = Camera.main.transform;
+        healthBarObject.transform.rotation = Quaternion.LookRotation(healthBarObject.transform.position - cam.position, Vector3.up);
     }
 
     private void DropWoodLog()

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; -unity-background-image-tint-color: rgb(255, 16, 16); background-color: rgb(161, 96, 48); position: absolute; height: 1166px; width: 1987px; top: 138px; left: 264px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;"/>
+    <ui:VisualElement style="flex-grow: 1; -unity-background-image-tint-color: rgb(255, 16, 16); background-color: rgb(166, 114, 76); position: absolute; height: 1166px; width: 1987px; top: 120px; left: 250px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;"/>
+    <ui:VisualElement style="flex-grow: 1; -unity-background-image-tint-color: rgb(255, 16, 16); background-color: rgb(217, 180, 152); position: absolute; height: 700px; width: 1729px; top: 522px; left: 383px; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+        <ui:Image style="position: absolute; height: 210px; width: 222px; top: 80px; left: 123px;"/>
+    </ui:VisualElement>
+</ui:UXML>
