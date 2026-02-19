@@ -14,6 +14,7 @@ public class TreeHealth : MonoBehaviour
 //[SerializeField] private float heightOffset = 1.5f;
 
     [SerializeField] private float height = 1f;
+    [SerializeField] private float radius = 3f;
     
     private int currentHealth;
     public void TakeDamage(int? damageAmount)
@@ -43,11 +44,16 @@ public class TreeHealth : MonoBehaviour
     {
         healthBarFill.fillAmount = (float)currentHealth / maxHealth;
         Vector3 position = transform.position;
+        Vector3 DirectionToPlayer = player.transform.position - position;
+        DirectionToPlayer.y = 0; 
+        Vector3 dir = DirectionToPlayer.normalized;
+        Vector3 offset = dir * radius + Vector3.up * height;
         //Vector3 directionToPlayer = (player.transform.position - position).normalized;
         //Vector3 offset = directionToPlayer * sideOffset + Vector3.up * heightOffset;
         //healthBarFill.transform.position = position + offset;
 
-        healthBarFill.transform.position = position + Vector3.up * height;
+        healthBarObject.transform.position = position + offset;
+        healthBarObject.transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
     }
 
     private void DropWoodLog()

@@ -18,12 +18,12 @@ public class InventoryShowItems : MonoBehaviour
     }
     
     
-    void OnItemAdded(string itemName, int quantity)
+    void OnItemAdded(ItemData itemData, int quantity)
     {
          inventoryText.text = "Inventory:\n";
         foreach (var item in inventory.Items)
         {
-            inventoryText.text += $"{item.Key}: {item.Value}\n";
+            inventoryText.text += $"{item.Key.ItemName}: {item.Value}\n";
         }
 
     }

@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     private Vector2 moveInput;
     private bool jumpTriggered;
 
+    [SerializeField] private GameObject yawPivot;
+
 
     private void Awake()
     {
@@ -37,15 +39,19 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 moveDirection = transform.right * moveInput.x + transform.forward * moveInput.y;
+        Vector3 moveDirection = yawPivot.transform.right * moveInput.x + yawPivot.transform.forward * moveInput.y;
 
 
-        rb.linearVelocity = moveDirection * moveSpeed;
+        rb.linearVelocity = new Vector3(moveDirection.x * moveSpeed, rb.linearVelocity.y, moveDirection.z * moveSpeed);
 
-        if (jumpTriggered)
+        Ray ray = new Ray(transform.position, Vector3.down);
+        if (Physics.Raycast(ray, 1.1f))
         {
-            rb.AddForce(new Vector3(0,10,0), ForceMode.Impulse);
-            jumpTriggered = false;
+            if (jumpTriggered)
+            {
+                rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+                jumpTriggered = false;
+            }
         }
     }
 }

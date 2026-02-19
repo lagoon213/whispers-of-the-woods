@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
 {
-    [SerializeField] private string itemName;
+    [SerializeField] private ItemData itemData;
     [SerializeField] private int quantity;
     private Inventory inventory;
 
@@ -32,7 +32,7 @@ public class PickUpObject : MonoBehaviour
         {
             Destroy(gameObject);
             IsPickupTriggered = false;
-            inventory.AddItems(itemName, quantity);
+            inventory.AddItems(itemData, quantity);
         }
     }
 }

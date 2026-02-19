@@ -7,6 +7,7 @@ public class DetectInteractable : MonoBehaviour
     [SerializeField] private float interactRange = 3f;
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private LayerMask treeInteractableLayer;
+    [SerializeField] private LayerMask UsableInteractableLayer;
 
     private ObjectDetectedLogic objectDetectedLogic;
 
@@ -35,6 +36,15 @@ public class DetectInteractable : MonoBehaviour
             {
                 objectDetectedLogic.RemoveOutline();
                 objectDetectedLogic = null;
+            }
+        }
+
+        if(Physics.Raycast(ray, out RaycastHit open, interactRange, UsableInteractableLayer))
+        {
+            CraftingTable usable = open.collider.GetComponentInParent<CraftingTable>();
+            if (usable != null)
+            {
+                usable.Detected();
             }
         }
 
