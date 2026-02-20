@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7714306057681467903
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 969.19885
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 26.63
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -63.914673
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_Name
+      value: SpruceTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2139234655446422}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 361075396351587892}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5538515908969777351}
+  m_SourcePrefab: {fileID: 100100000, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+--- !u!1 &7480428047660893358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+  m_PrefabInstance: {fileID: 7714306057681467903}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139234655446422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7480428047660893358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc70849e3e2a8649b7cea398f111b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  maxHealth: 5
+  AmountOfWoodLogsToDrop: 3
+  treeStump: {fileID: 4709760262051439315, guid: 458e7e61f534a024b9ebd8c8919057d8, type: 3}
+  healthBarPrefab: {fileID: 4188094264805229445, guid: 72b1f8c81cdd1644e908c991f5393347, type: 3}
+  woodLog: {fileID: 2999823979872984713, guid: adee7f70bf934f748883df0237944381, type: 3}
+  player: {fileID: 8153097177002871512, guid: ec2a7ac47085c474398f405e7da99b4c, type: 3}
+  height: 1.5
+  radius: 1
+--- !u!64 &361075396351587892
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7480428047660893358}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3429778143574227068, guid: 1abfdb5cfbc4fcc4182e11136e4da667, type: 3}
+--- !u!114 &5538515908969777351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7480428047660893358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2dcc62411a70ed429585893b927fa75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChopTree

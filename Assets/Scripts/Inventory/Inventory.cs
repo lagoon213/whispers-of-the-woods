@@ -22,10 +22,10 @@ public class Inventory : MonoBehaviour
         {
             items[itemData] = 0;
             NewMushroomTimer();
-            inventoryBar.TryAddingItemToBar(itemData, quantity);
+            inventoryBar.AddOrUpdate(itemData, quantity);
         }
         items[itemData] += quantity;
-        inventoryBar.UpdateItemInBar(itemData, items[itemData]);
+        inventoryBar.SetQuantity(itemData, items[itemData]);
         OnItemAdded?.Invoke(itemData, items[itemData]);
     }
 
@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
         if (items.ContainsKey(itemData) && items[itemData] >= quantity)
         {
             items[itemData] -= quantity;
-            OnItemRemoved?.Invoke(itemData, items[itemData]);
+            inventoryBar.SetQuantity(itemData, items[itemData]);
         }
         else
         {

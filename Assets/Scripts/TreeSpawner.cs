@@ -30,13 +30,15 @@ public class TreeSpawner : MonoBehaviour
 
     void SpawnTrees()
     {
+        Vector3 terrainSize = terrain.terrainData.size;
+        Vector3 terrainPosition = terrain.transform.position;
         for (int i = 0; i < numberOfTrees; i++)
         {
             
             Vector3 randomPosition = new Vector3(
-                Random.Range(0, terrain.terrainData.size.x),
+                Random.Range(terrainPosition.x, terrainPosition.x + terrainSize.x),
                 0,
-                Random.Range(0, terrain.terrainData.size.z)
+                Random.Range(terrainPosition.z, terrainPosition.z + terrainSize.z)
             );
 
             randomPosition.y = terrain.SampleHeight(randomPosition);

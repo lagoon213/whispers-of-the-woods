@@ -10,7 +10,12 @@ public class LookDirection : MonoBehaviour
     private float currentPitch = 0f;
     [SerializeField] private float maxPitch = 80f;
 
-
+    void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+    
     void Update()
     {
         float yaw = lookInput.x * sensitivity;

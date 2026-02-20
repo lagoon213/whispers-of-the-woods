@@ -1,24 +1,27 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TreeHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    [SerializeField] private Image healthBarFill;
     [SerializeField] private int AmountOfWoodLogsToDrop;
     [SerializeField] private GameObject treeStump;
-    [SerializeField] private GameObject healthBarObject;
+    [SerializeField] private GameObject healthBarPrefab;
     [SerializeField] private GameObject woodLog;
     [SerializeField] private GameObject player;
     [SerializeField] private float height = 1f;
     [SerializeField] private float radius = 3f;
+
+    private GameObject healthBarObject;
+    private Image healthBarFill;
     
     private int currentHealth;
     public void TakeDamage(int? damageAmount)
     {
         if (currentHealth == maxHealth)
         {
-            TriggerUI();
+            CreateHealthBar();
         }
         currentHealth -= damageAmount ?? 1;
     }
@@ -27,14 +30,17 @@ public class TreeHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            for (int i = 0; i < AmountOfWoodLogsToDrop; i++)
-            {
-                DropWoodLog();
-            }
+            DropWoodLog();
             healthBarObject.SetActive(false);
             Destroy(gameObject);
             LeaveTreeStump();
         }
+    }
+
+    private void CreateHealthBar()
+    {
+        healthBarObject = Instantiate(healthBarPrefab, transform);
+        healthBarFill = healthBarObject.GetComponentsInChildren<Image>()[1];
     }
 
     public void UpdateUI()
@@ -52,34 +58,28 @@ public class TreeHealth : MonoBehaviour
 
     private void DropWoodLog()
     {
-
+        float heightOffset = 0.5f;
+        for (int i = 0; i < AmountOfWoodLogsToDrop; i++)
+        {   
             Vector3 treePosition = transform.position;
-            Vector3 dropPosition = treePosition + Vector3.up * 1f;
+            Vector3 dropPosition = treePosition + Vector3.up * (height + i * heightOffset);
             Instantiate(woodLog, dropPosition, Quaternion.identity);
+        }
     }
 
     private void LeaveTreeStump()
     {
-        // Implement logic to replace the tree with a stump if desired
         Instantiate(treeStump, transform.position, Quaternion.identity);
-    }
-
-    public void TriggerUI()  
-    {
-        healthBarObject.SetActive(true);
-
     }
 
     void Start()
     {
         currentHealth = maxHealth;
-        healthBarObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (healthBarObject.activeInHierarchy)
+        if (healthBarObject != null && healthBarObject.activeInHierarchy)
         {
             UpdateUI();
         }
